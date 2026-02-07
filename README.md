@@ -16,3 +16,4 @@ PUBLISH_PREFIX=open BRANCH=main REMOTE=uemp ./scripts/publish_uemp.sh
 ```
 
 Use GitHub Actions workflow `.github/workflows/publish-uemp.yml` with `prefix=open`.
+The workflow is intentionally restricted to `open/` so internal docs cannot be published by mistake.
