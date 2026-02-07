@@ -33,6 +33,15 @@ def _valid_uemp_message() -> dict:
     }
 
 
+def _uemp_headers(**overrides: str) -> dict[str, str]:
+    headers = {
+        "Content-Type": "application/vnd.uemp+json",
+        "UEMP-Version": "1.0",
+    }
+    headers.update(overrides)
+    return headers
+
+
 class TestUEMPDiscovery:
     def test_well_known_uemp_exists(self):
         response = client.get("/.well-known/uemp")
@@ -59,7 +68,7 @@ class TestUEMPMessageValidation:
         response = client.post(
             "/api/uemp/messages",
             data=json.dumps(payload),
-            headers={"Content-Type": "application/vnd.uemp+json"},
+            headers=_uemp_headers(),
         )
 
         assert response.status_code == 200
@@ -79,7 +88,7 @@ class TestUEMPMessageValidation:
         response = client.post(
             "/api/uemp/messages",
             data=json.dumps(payload),
-            headers={"Content-Type": "application/vnd.uemp+json"},
+            headers=_uemp_headers(),
         )
 
         assert response.status_code == 400
@@ -93,7 +102,7 @@ class TestUEMPMessageValidation:
         response = client.post(
             "/api/uemp/messages",
             data=json.dumps(payload),
-            headers={"Content-Type": "application/vnd.uemp+json"},
+            headers=_uemp_headers(),
         )
 
         assert response.status_code == 400
@@ -112,3 +121,42 @@ class TestUEMPMessageValidation:
         assert response.status_code == 415
         body = response.json()
         assert body["code"] == "protocol-unsupported-media-type"
+
+    def test_rejects_missing_uemp_version_header(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers={"Content-Type": "application/vnd.uemp+json"},
+        )
+
+        assert response.status_code == 400
+        body = response.json()
+        assert body["code"] == "protocol-missing-required-header"
+
+    def test_rejects_mismatched_uemp_version_header(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers=_uemp_headers(**{"UEMP-Version": "2.0"}),
+        )
+
+        assert response.status_code == 400
+        body = response.json()
+        assert body["code"] == "protocol-header-mismatch"
+
+    def test_rejects_legacy_aip_headers(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers=_uemp_headers(**{"AIP-Version": "1.0"}),
+        )
+
+        assert response.status_code == 400
+        body = response.json()
+        assert body["code"] == "protocol-unknown-token-family"

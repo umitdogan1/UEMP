@@ -33,6 +33,13 @@ def _normalize_content_type(content_type: str | None) -> str:
     return content_type.split(";", 1)[0].strip().lower()
 
 
+def _find_legacy_aip_header(request: Request) -> str | None:
+    for header_name in request.headers.keys():
+        if header_name.lower().startswith("aip-"):
+            return header_name
+    return None
+
+
 def _protocol_error(
     *,
     status_code: int,
@@ -65,6 +72,26 @@ async def ingest_uemp_message(request: Request):
             code="protocol-unsupported-media-type",
             message=f"Unsupported media type '{content_type or 'missing'}'",
             hint=f"Use Content-Type: {UEMP_MEDIA_TYPE}",
+            action="fix-request",
+        )
+
+    legacy_header = _find_legacy_aip_header(request)
+    if legacy_header:
+        return _protocol_error(
+            status_code=400,
+            code="protocol-unknown-token-family",
+            message=f"Legacy header '{legacy_header}' is not supported",
+            hint="Use UEMP-* headers only",
+            action="fix-request",
+        )
+
+    header_version = request.headers.get("uemp-version")
+    if not header_version:
+        return _protocol_error(
+            status_code=400,
+            code="protocol-missing-required-header",
+            message="Missing required header 'UEMP-Version'",
+            hint="Set UEMP-Version to the envelope protocol version (e.g. 1.0)",
             action="fix-request",
         )
 
@@ -102,6 +129,16 @@ async def ingest_uemp_message(request: Request):
             action="fix-message",
         )
 
+    version = protocol_token.split("/", 1)[1]
+    if header_version != version:
+        return _protocol_error(
+            status_code=400,
+            code="protocol-header-mismatch",
+            message=f"Header UEMP-Version '{header_version}' does not match meta.protocol '{protocol_token}'",
+            hint=f"Set UEMP-Version to '{version}'",
+            action="fix-request",
+        )
+
     message_id = message.meta.id
     if not UEMP_MESSAGE_ID_PATTERN.fullmatch(message_id):
         return _protocol_error(
@@ -112,7 +149,41 @@ async def ingest_uemp_message(request: Request):
             action="fix-message",
         )
 
-    version = protocol_token.split("/", 1)[1]
+    header_message_id = request.headers.get("uemp-message-id")
+    if header_message_id and header_message_id != message_id:
+        return _protocol_error(
+            status_code=400,
+            code="protocol-header-mismatch",
+            message=f"Header UEMP-Message-Id '{header_message_id}' does not match meta.id '{message_id}'",
+            hint="Set UEMP-Message-Id to match meta.id or omit the header",
+            action="fix-request",
+        )
+
+    header_intent = request.headers.get("uemp-intent")
+    if header_intent and header_intent != message.meta.intent:
+        return _protocol_error(
+            status_code=400,
+            code="protocol-header-mismatch",
+            message=f"Header UEMP-Intent '{header_intent}' does not match meta.intent '{message.meta.intent}'",
+            hint="Set UEMP-Intent to match meta.intent or omit the header",
+            action="fix-request",
+        )
+
+    header_conversation_id = request.headers.get("uemp-conversation-id")
+    if header_conversation_id and header_conversation_id != (
+        message.meta.conversation_id or ""
+    ):
+        return _protocol_error(
+            status_code=400,
+            code="protocol-header-mismatch",
+            message=(
+                f"Header UEMP-Conversation-Id '{header_conversation_id}' does not match "
+                f"meta.conversationId '{message.meta.conversation_id or ''}'"
+            ),
+            hint="Set UEMP-Conversation-Id to match meta.conversationId or omit the header",
+            action="fix-request",
+        )
+
     response = UEMPValidationResult(
         accepted=True,
         message=message,
