@@ -26,6 +26,12 @@ from uemp_schemas import (
 
 router = APIRouter(prefix="/uemp", tags=["uemp"])
 
+_UEMP_ACCEPTED_CONTENT_TYPES = {
+    UEMP_MEDIA_TYPE,
+    UEMP_VERSIONED_MEDIA_TYPE,
+    "application/json",  # Fallback until IANA registration per spec.
+}
+
 
 def _normalize_content_type(content_type: str | None) -> str:
     if not content_type:
@@ -74,12 +80,12 @@ async def ingest_uemp_message(request: Request):
             hint=f"Use Content-Type: {UEMP_MEDIA_TYPE}",
             action="fix-request",
         )
-    if content_type != UEMP_MEDIA_TYPE:
+    if content_type not in _UEMP_ACCEPTED_CONTENT_TYPES:
         return _protocol_error(
             status_code=415,
             code="protocol-unsupported-media-type",
             message=f"Unsupported media type '{content_type or 'missing'}'",
-            hint=f"Use Content-Type: {UEMP_MEDIA_TYPE}",
+            hint=f"Use Content-Type: {UEMP_MEDIA_TYPE} (or {UEMP_VERSIONED_MEDIA_TYPE}; fallback: application/json)",
             action="fix-request",
         )
 

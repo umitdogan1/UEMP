@@ -128,12 +128,36 @@ class TestUEMPMessageValidation:
         response = client.post(
             "/api/uemp/messages",
             data=json.dumps(payload),
-            headers={"Content-Type": "application/json"},
+            headers={"Content-Type": "text/plain"},
         )
 
         assert response.status_code == 415
         body = response.json()
         assert body["code"] == "protocol-unsupported-media-type"
+
+    def test_accepts_application_json_fallback_media_type(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers={"Content-Type": "application/json", "UEMP-Version": "1.0"},
+        )
+
+        assert response.status_code == 200
+        assert response.headers["content-type"].startswith("application/vnd.uemp+json")
+
+    def test_accepts_versioned_uemp_media_type(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers={"Content-Type": "application/vnd.uemp.v1+json", "UEMP-Version": "1.0"},
+        )
+
+        assert response.status_code == 200
+        assert response.headers["content-type"].startswith("application/vnd.uemp+json")
 
     def test_rejects_missing_uemp_version_header(self):
         payload = _valid_uemp_message()
