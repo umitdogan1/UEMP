@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uemp.org/schema/edge-cases.schema.json",
+  "title": "UEMP Profile Artifact: edge-cases.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profileId", "edgeCases", "updatedAt"],
+  "properties": {
+    "profileId": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "edgeCases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "expectedBehavior"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" },
+          "classification": { "type": "string", "enum": ["schema", "business-rule", "referential", "mapping"], "default": "mapping" },
+          "expectedBehavior": { "type": "string", "minLength": 1 },
+          "fixture": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

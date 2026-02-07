@@ -10,6 +10,7 @@ Internal documents must never be copied here directly. Publish only content that
 - `spec/README.md`: Public specification status and publishing policy.
 - `spec/UEMP_PROTOCOL_PUBLIC_DRAFT.md`: Redacted public protocol draft.
 - `reference/python/`: Minimal public Python reference API, schemas, and tests.
+- `profiles/`: Public JSON Schemas and example profile artifact sets.
 
 ## Publishing
 

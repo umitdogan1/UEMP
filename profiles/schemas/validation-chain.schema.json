@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uemp.org/schema/validation-chain.schema.json",
+  "title": "UEMP Profile Artifact: validation-chain.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profileId", "stages", "updatedAt"],
+  "properties": {
+    "profileId": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["adapter", "mode"],
+        "properties": {
+          "adapter": {
+            "type": "string",
+            "enum": ["xsd", "schematron", "codelist", "edi-grammar", "business-rules", "referential"]
+          },
+          "mode": { "type": "string", "enum": ["fatal", "warning"] },
+          "timeoutMs": { "type": "integer", "minimum": 1 },
+          "config": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}
+

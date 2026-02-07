@@ -1,0 +1,17 @@
+{
+  "id": "iata-ndc/21.1",
+  "protocol": "IATA-NDC",
+  "version": "21.1",
+  "title": "IATA NDC 21.1 (Minimal Stub)",
+  "description": "Minimal profile fixture for schema validation tests only.",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T00:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}
+

@@ -1,0 +1,11 @@
+{
+  "profileId": "iata-ndc/21.1",
+  "updatedAt": "2026-02-07T00:00:00Z",
+  "roundTrip": {
+    "semantic": true,
+    "structural": false,
+    "byte": false,
+    "notes": "Fixture-only fidelity declaration."
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "profileId": "iata-ndc/21.1",
+  "updatedAt": "2026-02-07T00:00:00Z",
+  "stages": [
+    {
+      "adapter": "xsd",
+      "mode": "fatal",
+      "config": {
+        "schemaSet": "IATA-NDC/21.1"
+      }
+    }
+  ]
+}
+

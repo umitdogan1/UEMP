@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uemp.org/schema/fidelity.schema.json",
+  "title": "UEMP Profile Artifact: fidelity.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profileId", "roundTrip", "updatedAt"],
+  "properties": {
+    "profileId": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "roundTrip": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic"],
+      "properties": {
+        "semantic": { "type": "boolean" },
+        "structural": { "type": "boolean", "default": false },
+        "byte": { "type": "boolean", "default": false },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
+
