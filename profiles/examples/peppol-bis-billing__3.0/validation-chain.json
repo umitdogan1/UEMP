@@ -13,7 +13,7 @@
       "adapter": "schematron",
       "mode": "fatal",
       "config": {
-        "xsltPath": "data/schemas/schematron/peppol/xslt/PEPPOL-EN16931-UBL.xslt"
+        "xsltId": "peppol/PEPPOL-EN16931-UBL"
       }
     }
   ]
