@@ -14,7 +14,10 @@ This folder contains public-safe profile artifact schemas and example profile ar
 
 ## Example
 
-`open/profiles/examples/minimal/` is a minimal, non-production profile artifact set used for validation testing.
+Examples under `open/profiles/examples/` are minimal, non-production profile artifact sets:
+
+- `open/profiles/examples/minimal/` (iata-ndc/21.3)
+- `open/profiles/examples/peppol-bis-billing__3.0/` (peppol-bis-billing/3.0)
 
 ## Validation CLI (private repo)
 
@@ -24,4 +27,3 @@ In the private repo, the validator CLI is implemented as:
 cd backend
 venv/bin/python3.13 -m app.cli.uemp profile validate --path ../open/profiles/examples/minimal
 ```
-

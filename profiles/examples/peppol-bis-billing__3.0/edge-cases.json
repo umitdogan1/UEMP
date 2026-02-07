@@ -1,0 +1,13 @@
+{
+  "profileId": "peppol-bis-billing/3.0",
+  "updatedAt": "2026-02-07T01:00:00Z",
+  "edgeCases": [
+    {
+      "id": "ec-001",
+      "title": "Missing required profile identifiers",
+      "description": "A UBL Invoice that passes XSD but fails Peppol Schematron due to missing CustomizationID/ProfileID.",
+      "classification": "business-rule",
+      "expectedBehavior": "Validation chain fails at Schematron with normalized constraint errors."
+    }
+  ]
+}

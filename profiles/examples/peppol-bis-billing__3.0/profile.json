@@ -1,0 +1,17 @@
+{
+  "id": "peppol-bis-billing/3.0",
+  "protocol": "PEPPOL-BIS-BILLING",
+  "protocolId": "peppol_bis_billing",
+  "version": "3.0",
+  "title": "Peppol BIS Billing 3.0 (Example)",
+  "description": "Public example profile artifact (not a certified profile).",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T01:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}
