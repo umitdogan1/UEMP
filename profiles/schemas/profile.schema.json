@@ -16,6 +16,11 @@
       "minLength": 1,
       "description": "Native protocol family, e.g. IATA-NDC"
     },
+    "protocolId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Internal protocol id used by adapters (e.g. ndc, iso20022, peppol_bis_billing)."
+    },
     "version": {
       "type": "string",
       "minLength": 1,
@@ -52,4 +57,3 @@
     }
   }
 }
-
