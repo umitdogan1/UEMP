@@ -4,9 +4,9 @@
 
 **Version**: 0.1.0 (Public Draft)
 **Status**: Public Draft
-**Last Updated**: 2025-02-07
+**Last Updated**: 2026-02-07
 
-**Naming Transition Notice**: This draft is now UEMP-first. Legacy `AIP` wire tokens are not supported.
+**Naming Transition Notice**: This draft is UEMP-only. Legacy `AIP` wire tokens MUST be rejected. No backward compatibility is provided.
 
 ---
 
@@ -2737,10 +2737,10 @@ UEMP defines three levels of round-trip fidelity:
 # Automated round-trip test
 def test_lossless_roundtrip(ndc_xml: str):
     # Forward conversion
-    aip_message = ndc_codec.to_aip(ndc_xml)
+    uemp_message = ndc_codec.to_uemp(ndc_xml)
 
     # Reverse conversion
-    reconstructed_xml = ndc_codec.from_aip(aip_message)
+    reconstructed_xml = ndc_codec.from_uemp(uemp_message)
 
     # Parse both XMLs
     original_tree = etree.parse(ndc_xml)
@@ -2781,7 +2781,7 @@ Run this against the **178+ XML examples already in the codebase** (75 CII + 95 
 # Use structured output to constrain AI to valid schema
 response = gemini.generate(
     prompt=conversion_prompt,
-    response_schema=AIPMessageSchema,  # Pydantic model
+    response_schema=UEMPMessageSchema,  # Pydantic model
     temperature=settings.gemini_temperature_strict  # 0.1
 )
 ```
@@ -2789,8 +2789,8 @@ response = gemini.generate(
 **Layer 2 — Structural Validation**:
 ```python
 # JSON Schema validation (deterministic, fast)
-validator = AIPSchemaValidator(domain="air-travel", message="create-order")
-result = validator.validate(aip_message)
+validator = UEMPSchemaValidator(domain="air-travel", message="create-order")
+result = validator.validate(uemp_message)
 # Catches: missing fields, wrong types, invalid enums
 ```
 
@@ -2799,14 +2799,14 @@ result = validator.validate(aip_message)
 # Rule engine checks semantic constraints
 rules = registry.get_rules("air-travel/create-order")
 for rule in rules:
-    rule.validate(aip_message)
+    rule.validate(uemp_message)
 # Catches: amount mismatches, date contradictions, age-category mismatch
 ```
 
 **Layer 4 — Referential Validation** (new):
 ```python
 # Validate references against external data sources
-async def validate_references(message: AIPMessage):
+async def validate_references(message: UEMPMessage):
     errors = []
     for segment in message.data.segments:
         if not await iata_api.flight_exists(segment.carrier, segment.flight, segment.departure):

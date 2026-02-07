@@ -93,7 +93,7 @@ class TestUEMPMessageValidation:
 
         assert response.status_code == 400
         body = response.json()
-        assert body["code"] == "protocol-invalid-version"
+        assert body["code"] == "protocol-unknown-token-family"
 
     def test_rejects_non_uemp_message_id(self):
         payload = _valid_uemp_message()
@@ -107,7 +107,20 @@ class TestUEMPMessageValidation:
 
         assert response.status_code == 400
         body = response.json()
-        assert body["code"] == "protocol-invalid-message-id"
+        assert body["code"] == "protocol-unknown-token-family"
+
+    def test_rejects_legacy_aip_media_type(self):
+        payload = _valid_uemp_message()
+
+        response = client.post(
+            "/api/uemp/messages",
+            data=json.dumps(payload),
+            headers={"Content-Type": "application/vnd.aip+json", "UEMP-Version": "1.0"},
+        )
+
+        assert response.status_code == 400
+        body = response.json()
+        assert body["code"] == "protocol-unknown-token-family"
 
     def test_rejects_non_uemp_media_type(self):
         payload = _valid_uemp_message()

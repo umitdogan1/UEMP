@@ -66,6 +66,14 @@ def _protocol_error(
 async def ingest_uemp_message(request: Request):
     """Validate and accept a UEMP envelope."""
     content_type = _normalize_content_type(request.headers.get("content-type"))
+    if content_type.startswith("application/vnd.aip"):
+        return _protocol_error(
+            status_code=400,
+            code="protocol-unknown-token-family",
+            message=f"Token family 'aip' is not supported in media type '{content_type}'",
+            hint=f"Use Content-Type: {UEMP_MEDIA_TYPE}",
+            action="fix-request",
+        )
     if content_type != UEMP_MEDIA_TYPE:
         return _protocol_error(
             status_code=415,
@@ -120,6 +128,14 @@ async def ingest_uemp_message(request: Request):
         )
 
     protocol_token = message.meta.protocol
+    if protocol_token.lower().startswith("aip/"):
+        return _protocol_error(
+            status_code=400,
+            code="protocol-unknown-token-family",
+            message=f"Token family 'aip' is not supported in protocol token '{protocol_token}'",
+            hint="Use protocol token format uemp/X.Y",
+            action="fix-message",
+        )
     if not UEMP_PROTOCOL_PATTERN.fullmatch(protocol_token):
         return _protocol_error(
             status_code=400,
@@ -140,6 +156,14 @@ async def ingest_uemp_message(request: Request):
         )
 
     message_id = message.meta.id
+    if message_id.lower().startswith("aip:"):
+        return _protocol_error(
+            status_code=400,
+            code="protocol-unknown-token-family",
+            message=f"Token family 'aip' is not supported in message ID '{message_id}'",
+            hint="Use format uemp:{party}:{year}:{id}",
+            action="fix-message",
+        )
     if not UEMP_MESSAGE_ID_PATTERN.fullmatch(message_id):
         return _protocol_error(
             status_code=400,
