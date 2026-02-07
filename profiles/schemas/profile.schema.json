@@ -9,7 +9,7 @@
     "id": {
       "type": "string",
       "minLength": 1,
-      "description": "Stable profile identifier, e.g. iata-ndc/21.1"
+      "description": "Stable profile identifier, e.g. iata-ndc/21.3"
     },
     "protocol": {
       "type": "string",
@@ -24,7 +24,7 @@
     "version": {
       "type": "string",
       "minLength": 1,
-      "description": "Native protocol version, e.g. 21.1"
+      "description": "Native protocol version, e.g. 21.3"
     },
     "title": {
       "type": "string",

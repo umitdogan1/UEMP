@@ -296,7 +296,7 @@ Response:
       "websocket": "wss://api.example.com/uemp/ws",
       "batch": "https://api.example.com/uemp/batch"
     },
-    "nativeProtocols": ["IATA-NDC/21.1", "IATA-NDC/23.2", "PEPPOL-BIS/3.0"]
+    "nativeProtocols": ["IATA-NDC/21.3", "IATA-NDC/24.3", "PEPPOL-BIS/3.0"]
   }
 }
 ```
@@ -326,7 +326,7 @@ Business scenario: **Round-trip flight booking for 1 adult, London to New York, 
     "source": {
       "party": { "id": "AGENCY-12345", "role": "travel-agency" },
       "native": [
-        { "protocol": "IATA-NDC", "version": "21.1", "message": "OrderCreateRQ" }
+        { "protocol": "IATA-NDC", "version": "21.3", "message": "OrderCreateRQ" }
       ]
     },
     "target": {
@@ -441,7 +441,7 @@ Business scenario: **Round-trip flight booking for 1 adult, London to New York, 
     ],
 
     "nativeMapping": {
-      "IATA-NDC/21.1": {
+      "IATA-NDC/21.3": {
         "travelers[0].category=adult": "Passenger/PTC=ADT",
         "journeys[0].segments[0].cabin=economy": "CabinType/Code=M",
         "journeys[0].segments[0].bookingClass=Y": "RBD=Y",
@@ -504,11 +504,11 @@ SSR+DOCS+HK+1+++P+GBR+P12345678+GBR+850315+M+SMITH+JOHN'
 
 **NDC XML** (~3,000 bytes, verbose):
 ```xml
-<OrderCreateRQ xmlns="http://www.iata.org/IATA/2015/00/2021.1/IATA_OrderCreateRQ"
-  Version="21.1">
+<OrderCreateRQ xmlns="http://www.iata.org/IATA/2015/00/2021.3/IATA_OrderCreateRQ"
+  Version="21.3">
   <Document>
     <Name>NDC OrderCreateRQ</Name>
-    <ReferenceVersion>21.1</ReferenceVersion>
+    <ReferenceVersion>21.3</ReferenceVersion>
   </Document>
   <Party>
     <Sender>
@@ -538,7 +538,7 @@ SSR+DOCS+HK+1+++P+GBR+P12345678+GBR+850315+M+SMITH+JOHN'
 **UEMP** (~700 bytes compact, self-describing):
 ```json
 {
-  "meta": { "intent": "create-order", "source": { "native": [{ "protocol": "IATA-NDC", "version": "21.1" }] } },
+  "meta": { "intent": "create-order", "source": { "native": [{ "protocol": "IATA-NDC", "version": "21.3" }] } },
   "data": {
     "travelers": [{ "category": "adult", "name": { "given": "John", "surname": "Smith" } }],
     "journeys": [
@@ -1378,7 +1378,7 @@ This separation ensures that compliance regimes (eIDAS Article 25, GDPR Article 
         "action": "converted",
         "agent": { "id": "uemp-gateway/v1.0", "type": "software" },
         "at": "2024-03-15T08:29:52Z",
-        "sourceFormat": "IATA-NDC/21.1",
+        "sourceFormat": "IATA-NDC/21.3",
         "targetFormat": "uemp/1.0",
         "lossless": true
       },
@@ -1615,7 +1615,7 @@ Layers 1-3 catch ~99% of errors. Layers 4-5 catch most of the remaining 1%. See 
 registry/
 ├── profiles/
 │   ├── IATA-NDC/
-│   │   └── 21.1/
+│   │   └── 21.3/
 │   │       ├── profile.json
 │   │       ├── mappings.json
 │   │       ├── validation-chain.json
@@ -1827,7 +1827,7 @@ profiles/{protocol-family}/{version}/
 
 `profile.json` MUST declare:
 - `protocolFamily` (e.g., `IATA-NDC`, `PEPPOL-BIS`, `UN-EDIFACT`, `ISO20022`)
-- `protocolVersion` (e.g., `21.1`, `3.0`, `D.96A`, `pain.001.001.09`)
+- `protocolVersion` (e.g., `21.3`, `3.0`, `D.96A`, `pain.001.001.09`)
 - supported message set (e.g., `OrderCreateRQ`, `INVOIC`, `Invoice`, `pain.001`)
 - required validator adapters
 - declared support level (see [Section 9.6.4](#964-support-levels))
@@ -1910,7 +1910,7 @@ Known high-risk edge cases MUST have regression tests before a profile can reach
   "profiles": [
     {
       "protocolFamily": "IATA-NDC",
-      "protocolVersion": "21.1",
+      "protocolVersion": "21.3",
       "supportLevel": "L3",
       "fidelity": "semantic",
       "messageTypes": ["OrderCreateRQ", "OrderViewRS"],
@@ -2554,7 +2554,7 @@ The fields `id`, `party`, `scope`, `algorithm`, and `value` are the required bas
         "action": "converted",
         "type": "deterministic",
         "agent": { "id": "uemp-ndc-codec/1.2.3", "type": "software" },
-        "input": { "hash": "sha256:input-hash", "format": "IATA-NDC/21.1" },
+        "input": { "hash": "sha256:input-hash", "format": "IATA-NDC/21.3" },
         "output": { "hash": "sha256:output-hash", "format": "uemp/1.0" },
         "reproducible": true
       }
@@ -2594,7 +2594,7 @@ Solution: **AI-assisted conversions are flagged as non-deterministic** and carry
         "action": "converted",
         "type": "non-deterministic",
         "agent": { "id": "gemini-2.5-pro", "type": "ai-model" },
-        "sourceFormat": "IATA-NDC/21.1",
+        "sourceFormat": "IATA-NDC/21.3",
         "targetFormat": "uemp/1.0",
         "lossless": false
       }
@@ -2703,14 +2703,14 @@ Phase 3: UEMP as recognized syntax for EN 16931
 {
   "context": {
     "nativeMapping": {
-      "IATA-NDC/21.1": {
+      "IATA-NDC/21.3": {
         "_namespaces": {
-          "": "http://www.iata.org/IATA/2015/00/2021.1/IATA_OrderCreateRQ",
+          "": "http://www.iata.org/IATA/2015/00/2021.3/IATA_OrderCreateRQ",
           "xsi": "http://www.w3.org/2001/XMLSchema-instance"
         },
         "_rootElement": "OrderCreateRQ",
         "_attributes": {
-          "OrderCreateRQ.Version": "21.1",
+          "OrderCreateRQ.Version": "21.3",
           "Passenger.PassengerID": "travelers[0].ref"
         },
         "travelers[0].category=adult": "Passenger/PTC=ADT",

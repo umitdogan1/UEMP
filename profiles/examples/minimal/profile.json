@@ -1,9 +1,9 @@
 {
-  "id": "iata-ndc/21.1",
+  "id": "iata-ndc/21.3",
   "protocol": "IATA-NDC",
   "protocolId": "ndc",
-  "version": "21.1",
-  "title": "IATA NDC 21.1 (Minimal Stub)",
+  "version": "21.3",
+  "title": "IATA NDC 21.3 (Minimal Stub)",
   "description": "Minimal profile fixture for schema validation tests only.",
   "status": "draft",
   "supportLevel": "L0",
