@@ -10,9 +10,7 @@ This folder contains public-safe protocol artifacts only.
 ## Current State
 
 - `UEMP_PROTOCOL_PUBLIC_DRAFT.md` is published as a redacted public draft.
-- `UEMP_MIGRATION_PUBLIC.md` is published for AIP -> UEMP cutover guidance.
 
 ## Included Files
 
 - `UEMP_PROTOCOL_PUBLIC_DRAFT.md`
-- `UEMP_MIGRATION_PUBLIC.md`

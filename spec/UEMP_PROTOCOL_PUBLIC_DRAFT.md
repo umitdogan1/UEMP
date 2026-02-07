@@ -6,7 +6,7 @@
 **Status**: Public Draft
 **Last Updated**: 2025-02-07
 
-**Naming Transition Notice**: This draft is now UEMP-first. Legacy `AIP` wire tokens are not supported. Rename and cutover rules are defined in `./UEMP_MIGRATION_PUBLIC.md`.
+**Naming Transition Notice**: This draft is now UEMP-first. Legacy `AIP` wire tokens are not supported.
 
 ---
 
@@ -3081,7 +3081,3 @@ Standardization → Committee design → Specification → Hope for adoption
    - Schema registry is decentralized (anyone can host a mirror)
 
 ---
-
----
-
-> Public draft note: This document intentionally excludes product positioning, internal implementation details, and IP/trade-secret strategy sections.

@@ -9,7 +9,6 @@ Internal documents must never be copied here directly. Publish only content that
 - `LICENSE`: Public license for this subtree.
 - `spec/README.md`: Public specification status and publishing policy.
 - `spec/UEMP_PROTOCOL_PUBLIC_DRAFT.md`: Redacted public protocol draft.
-- `spec/UEMP_MIGRATION_PUBLIC.md`: Public migration mapping.
 - `reference/python/`: Minimal public Python reference API, schemas, and tests.
 
 ## Publishing
