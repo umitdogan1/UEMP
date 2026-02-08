@@ -38,7 +38,7 @@
 10. [Protocol Comparison](#10-protocol-comparison)
 11. [Strengths & Weaknesses](#11-strengths--weaknesses)
 12. [Open Problems](#12-open-problems)
-13. [Adoption Strategy](#13-adoption-strategy)
+13. [Adoption Notes](#13-adoption-notes)
 14. [Specific Concerns Deep-Dive](#14-specific-concerns-deep-dive)
     - [14.1 JAdES Digital Signatures](#141-jades-digital-signatures)
     - [14.2 Determinism](#142-determinism)
@@ -2013,16 +2013,16 @@ These problems are acknowledged but not yet fully solved at the protocol level:
 |---------|--------|-------------|
 | Legal equivalence with XML-DSIG | Unsolved | Requires regulatory engagement (eIDAS, UN/CEFACT) |
 | AI hallucination in generation | Mitigated (5-layer defense, see [Section 14.5](#145-ai-hallucination-in-critical-messages)) | Improving with model capabilities |
-| Industry governance body adoption | Not started | Requires political strategy, not technical work |
+| Industry governance body adoption | Not started | Requires governance and standards engagement beyond technical work |
 | Performance for HFT protocols (FIX) | Out of scope | UEMP targets seconds-scale protocols, not microsecond |
 | Complete lossless round-trip for all protocols | Partially solved | Edge cases need per-protocol testing |
 | JSON Schema expressiveness gap vs XSD | Minor | JSON Schema draft-2020-12 closes most gaps |
 
 ---
 
-## 13. Adoption Strategy
+## 13. Adoption Notes
 
-This section is **non-normative** and focuses on protocol adoption mechanics (not product positioning, commercialization, or revenue strategy).
+This section is **non-normative** and focuses on protocol adoption mechanics (not product positioning, roadmaps, or implementation details).
 
 ### 13.1 Gateway-First Adoption (One-Sided Value)
 
@@ -2673,17 +2673,13 @@ Every failed protocol tried to reverse this:
 Standardization → Committee design → Specification → Hope for adoption
 ```
 
-**UEMP governance strategy based on these lessons**:
+**A governance approach based on these lessons**:
 
-1. **Years 0-2: Ship code, not specs**. The Python/TypeScript SDKs ARE the specification. The spec document is documentation, not law. If the code and spec disagree, the code wins.
+1. **Ship working implementations and test vectors first**. Avoid "spec-first" governance that blocks tooling.
 
-2. **Years 1-3: Community governance via GitHub**. RFCs as GitHub discussions. Breaking changes require a PR with migration guide. Versioned releases (semver). Contributors sign DCO (Developer Certificate of Origin), not CLA.
+2. **Run an open change process**. Use an RFC/PR-based workflow with clear compatibility rules and conformance packs.
 
-3. **Years 3-5: Foundation when earned**. Form a foundation ONLY when there are 10+ companies in production. Foundation structure:
-   - Technical Steering Committee (elected from active contributors)
-   - Domain Working Groups (air-travel, invoicing, finance, healthcare)
-   - No single company gets more than 2 seats on TSC
-   - Specification decisions require 2/3 majority + reference implementation
+3. **Move to neutral governance only after multi-implementation adoption**. A foundation or standards body process is most effective once multiple independent implementations exist.
 
 4. **Anti-capture measures**:
    - Apache 2.0 license (irrevocable, no take-backs)
