@@ -54,6 +54,22 @@
         "fidelity": { "type": "string", "const": "fidelity.json" },
         "edgeCases": { "type": "string", "const": "edge-cases.json" }
       }
+    },
+    "correctionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional guidance for native correction loops (deterministic and/or AI-assisted).",
+      "properties": {
+        "allowPlaceholders": {
+          "type": "boolean",
+          "description": "If true, the correction loop may insert placeholder tokens (instead of inventing real business data) to satisfy mandatory fields/segments."
+        },
+        "placeholderStyle": {
+          "type": "string",
+          "enum": ["angle", "double_braces"],
+          "description": "Placeholder token style. angle: <supplier_id>. double_braces: {{supplier_id}}."
+        }
+      }
     }
   }
 }
