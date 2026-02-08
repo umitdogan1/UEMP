@@ -2,6 +2,13 @@
 
 This folder contains public-safe profile artifact schemas and example profile artifact sets.
 
+## Asset IDs
+
+Profiles should reference bundled validator assets by stable identifiers (not host file paths):
+
+- Schematron allowlist: `open/profiles/SCHEMATRON_ASSETS.md`
+- XSD schemaSet allowlist: `open/profiles/XSD_SCHEMA_SETS.md`
+
 ## Schemas
 
 `open/profiles/schemas/` contains JSON Schemas for the standard profile artifact files:

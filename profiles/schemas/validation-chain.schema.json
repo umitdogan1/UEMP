@@ -23,9 +23,64 @@
           "mode": { "type": "string", "enum": ["fatal", "warning"] },
           "timeoutMs": { "type": "integer", "minimum": 1 },
           "config": { "type": "object", "additionalProperties": true }
-        }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "adapter": { "const": "schematron" } } },
+            "then": {
+              "required": ["config"],
+              "properties": {
+                "config": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "anyOf": [
+                    {
+                      "required": ["xsltId"],
+                      "properties": {
+                        "xsltId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "description": "Allowlisted XSLT asset id. Preferred over xsltPath."
+                        }
+                      }
+                    },
+                    {
+                      "required": ["xsltPath"],
+                      "properties": {
+                        "xsltPath": {
+                          "type": "string",
+                          "minLength": 1,
+                          "description": "Path to XSLT. Implementations SHOULD restrict to allowlisted bundled assets."
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "if": { "properties": { "adapter": { "const": "xsd" } } },
+            "then": {
+              "properties": {
+                "config": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "schemaSet": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Optional allowlisted schema set identifier, e.g. UBL/2.1 or IATA-NDC/21.3."
+                    },
+                    "schemaSetId": { "type": "string", "minLength": 1 },
+                    "schema_set": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        ]
       }
     }
   }
 }
-
