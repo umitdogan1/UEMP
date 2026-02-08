@@ -1,0 +1,13 @@
+{
+  "profileId": "en16931-ubl/1.3",
+  "updatedAt": "2026-02-07T03:00:00Z",
+  "edgeCases": [
+    {
+      "id": "ec-001",
+      "title": "Missing mandatory EN16931 fields",
+      "description": "A UBL Invoice that passes XSD but fails EN16931 Schematron due to missing mandatory business fields.",
+      "classification": "business-rule",
+      "expectedBehavior": "Validation chain fails at Schematron with normalized constraint errors."
+    }
+  ]
+}

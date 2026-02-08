@@ -1,0 +1,17 @@
+{
+  "id": "en16931-ubl/1.3",
+  "protocol": "EN16931-UBL",
+  "protocolId": "en16931_ubl",
+  "version": "1.3",
+  "title": "EN 16931 UBL 1.3 (Example)",
+  "description": "Public example profile artifact (not a certified profile).",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T03:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}

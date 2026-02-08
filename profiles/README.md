@@ -18,6 +18,7 @@ Examples under `open/profiles/examples/` are minimal, non-production profile art
 
 - `open/profiles/examples/minimal/` (iata-ndc/21.3)
 - `open/profiles/examples/peppol-bis-billing__3.0/` (peppol-bis-billing/3.0)
+- `open/profiles/examples/en16931-ubl__1.3/` (en16931-ubl/1.3)
 
 ## Validation CLI (private repo)
 
