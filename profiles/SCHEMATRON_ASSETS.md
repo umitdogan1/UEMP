@@ -1,6 +1,6 @@
 # Schematron Assets (xsltId Allowlist)
 
-UEMP profiles should reference Schematron validators using `config.xsltId`, not filesystem paths.
+UEMP profiles MUST reference Schematron validators using `config.xsltId` (or `config.xslt_id`), not filesystem paths.
 
 This document lists the currently allowlisted `xsltId` values used by the reference implementation.
 
@@ -11,4 +11,3 @@ This document lists the currently allowlisted `xsltId` values used by the refere
 - `en16931/EN16931-CII-validation`
 - `xrechnung/XRechnung-UBL-validation`
 - `xrechnung/XRechnung-CII-validation`
-

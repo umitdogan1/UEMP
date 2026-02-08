@@ -40,17 +40,17 @@
                         "xsltId": {
                           "type": "string",
                           "minLength": 1,
-                          "description": "Allowlisted XSLT asset id. Preferred over xsltPath."
+                          "description": "Allowlisted XSLT asset id."
                         }
                       }
                     },
                     {
-                      "required": ["xsltPath"],
+                      "required": ["xslt_id"],
                       "properties": {
-                        "xsltPath": {
+                        "xslt_id": {
                           "type": "string",
                           "minLength": 1,
-                          "description": "Path to XSLT. Implementations SHOULD restrict to allowlisted bundled assets."
+                          "description": "Allowlisted XSLT asset id (snake_case alias)."
                         }
                       }
                     }
