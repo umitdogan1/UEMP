@@ -4,7 +4,7 @@ This folder contains public-safe protocol artifacts only.
 
 ## Policy
 
-- Do not add internal strategy, roadmap, product positioning, or private implementation details.
+- Do not add product positioning, business strategy, roadmaps, or implementation details that are not part of the protocol.
 - Only publish documents that have passed public-release review.
 
 ## Current State

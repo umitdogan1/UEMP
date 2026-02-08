@@ -6,12 +6,12 @@ This folder contains public-safe profile artifact schemas and example profile ar
 
 Profiles should reference bundled validator assets by stable identifiers (not host file paths):
 
-- Schematron allowlist: `open/profiles/SCHEMATRON_ASSETS.md`
-- XSD schemaSet allowlist: `open/profiles/XSD_SCHEMA_SETS.md`
+- Schematron allowlist: `profiles/SCHEMATRON_ASSETS.md`
+- XSD schemaSet allowlist: `profiles/XSD_SCHEMA_SETS.md`
 
 ## Schemas
 
-`open/profiles/schemas/` contains JSON Schemas for the standard profile artifact files:
+`profiles/schemas/` contains JSON Schemas for the standard profile artifact files:
 
 - `profile.schema.json` (for `profile.json`)
 - `mappings.schema.json` (for `mappings.json`)
@@ -21,20 +21,15 @@ Profiles should reference bundled validator assets by stable identifiers (not ho
 
 ## Example
 
-Examples under `open/profiles/examples/` are minimal, non-production profile artifact sets:
+Examples under `profiles/examples/` are minimal, non-production profile artifact sets:
 
-- `open/profiles/examples/minimal/` (iata-ndc/21.3)
-- `open/profiles/examples/peppol-bis-billing__3.0/` (peppol-bis-billing/3.0)
-- `open/profiles/examples/en16931-ubl__1.3/` (en16931-ubl/1.3)
-- `open/profiles/examples/en16931-cii__1.3/` (en16931-cii/1.3)
-- `open/profiles/examples/xrechnung-cii__3.0/` (xrechnung-cii/3.0)
-- `open/profiles/examples/iso20022__MR2019/` (iso20022/MR2019)
+- `profiles/examples/minimal/` (iata-ndc/21.3)
+- `profiles/examples/peppol-bis-billing__3.0/` (peppol-bis-billing/3.0)
+- `profiles/examples/en16931-ubl__1.3/` (en16931-ubl/1.3)
+- `profiles/examples/en16931-cii__1.3/` (en16931-cii/1.3)
+- `profiles/examples/xrechnung-cii__3.0/` (xrechnung-cii/3.0)
+- `profiles/examples/iso20022__MR2019/` (iso20022/MR2019)
 
-## Validation CLI (private repo)
+## Validation
 
-In the private repo, the validator CLI is implemented as:
-
-```bash
-cd backend
-venv/bin/python3.13 -m app.cli.uemp profile validate --path ../open/profiles/examples/minimal
-```
+These artifacts are JSON Schema-validatable. Use any Draft 2020-12 compatible JSON Schema validator.
