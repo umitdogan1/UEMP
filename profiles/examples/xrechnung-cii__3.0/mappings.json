@@ -1,0 +1,13 @@
+{
+  "profileId": "xrechnung-cii/3.0",
+  "updatedAt": "2026-02-07T05:00:00Z",
+  "mappings": [
+    {
+      "uempPath": "$.data.invoice.id",
+      "nativePath": "/*/rsm:ExchangedDocument/ram:ID",
+      "direction": "bidirectional",
+      "required": true,
+      "notes": "Example mapping only."
+    }
+  ]
+}

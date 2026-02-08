@@ -1,0 +1,17 @@
+{
+  "id": "iso20022/MR2019",
+  "protocol": "ISO20022",
+  "protocolId": "iso20022",
+  "version": "MR2019",
+  "title": "ISO 20022 MR2019 (Example)",
+  "description": "Public example profile artifact (not a certified profile).",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T06:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}

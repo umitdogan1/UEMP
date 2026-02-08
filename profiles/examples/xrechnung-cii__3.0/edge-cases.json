@@ -1,0 +1,13 @@
+{
+  "profileId": "xrechnung-cii/3.0",
+  "updatedAt": "2026-02-07T05:00:00Z",
+  "edgeCases": [
+    {
+      "id": "ec-001",
+      "title": "Missing XRechnung identifiers",
+      "description": "A CII invoice that passes XSD but fails XRechnung Schematron due to missing mandatory German business fields.",
+      "classification": "business-rule",
+      "expectedBehavior": "Validation chain fails at Schematron with normalized constraint errors."
+    }
+  ]
+}

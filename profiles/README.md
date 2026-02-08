@@ -19,6 +19,9 @@ Examples under `open/profiles/examples/` are minimal, non-production profile art
 - `open/profiles/examples/minimal/` (iata-ndc/21.3)
 - `open/profiles/examples/peppol-bis-billing__3.0/` (peppol-bis-billing/3.0)
 - `open/profiles/examples/en16931-ubl__1.3/` (en16931-ubl/1.3)
+- `open/profiles/examples/en16931-cii__1.3/` (en16931-cii/1.3)
+- `open/profiles/examples/xrechnung-cii__3.0/` (xrechnung-cii/3.0)
+- `open/profiles/examples/iso20022__MR2019/` (iso20022/MR2019)
 
 ## Validation CLI (private repo)
 

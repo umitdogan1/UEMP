@@ -1,0 +1,13 @@
+{
+  "profileId": "iso20022/MR2019",
+  "updatedAt": "2026-02-07T06:00:00Z",
+  "edgeCases": [
+    {
+      "id": "ec-001",
+      "title": "Missing required ISO 20022 children",
+      "description": "A message with correct namespace but missing mandatory children (XSD fail).",
+      "classification": "schema",
+      "expectedBehavior": "XSD validation fails with normalized errors pointing to the missing required child elements."
+    }
+  ]
+}

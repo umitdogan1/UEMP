@@ -1,0 +1,20 @@
+{
+  "profileId": "en16931-cii/1.3",
+  "updatedAt": "2026-02-07T04:00:00Z",
+  "stages": [
+    {
+      "adapter": "xsd",
+      "mode": "fatal",
+      "config": {
+        "schemaSet": "CII/D16B"
+      }
+    },
+    {
+      "adapter": "schematron",
+      "mode": "fatal",
+      "config": {
+        "xsltId": "en16931/EN16931-CII-validation"
+      }
+    }
+  ]
+}

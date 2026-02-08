@@ -1,0 +1,17 @@
+{
+  "id": "xrechnung-cii/3.0",
+  "protocol": "XRECHNUNG-CII",
+  "protocolId": "xrechnung_cii",
+  "version": "3.0",
+  "title": "XRechnung CII 3.0 (Example)",
+  "description": "Public example profile artifact (not a certified profile).",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T05:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}

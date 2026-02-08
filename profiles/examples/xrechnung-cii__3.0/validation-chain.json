@@ -1,0 +1,20 @@
+{
+  "profileId": "xrechnung-cii/3.0",
+  "updatedAt": "2026-02-07T05:00:00Z",
+  "stages": [
+    {
+      "adapter": "xsd",
+      "mode": "fatal",
+      "config": {
+        "schemaSet": "CII/D16B"
+      }
+    },
+    {
+      "adapter": "schematron",
+      "mode": "fatal",
+      "config": {
+        "xsltId": "xrechnung/XRechnung-CII-validation"
+      }
+    }
+  ]
+}

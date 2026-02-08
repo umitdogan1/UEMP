@@ -1,0 +1,10 @@
+{
+  "profileId": "en16931-cii/1.3",
+  "updatedAt": "2026-02-07T04:00:00Z",
+  "roundTrip": {
+    "semantic": true,
+    "structural": false,
+    "byte": false,
+    "notes": "Example-only fidelity declaration."
+  }
+}

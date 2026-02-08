@@ -1,0 +1,17 @@
+{
+  "id": "en16931-cii/1.3",
+  "protocol": "EN16931-CII",
+  "protocolId": "en16931_cii",
+  "version": "1.3",
+  "title": "EN 16931 CII 1.3 (Example)",
+  "description": "Public example profile artifact (not a certified profile).",
+  "status": "draft",
+  "supportLevel": "L0",
+  "updatedAt": "2026-02-07T04:00:00Z",
+  "artifacts": {
+    "mappings": "mappings.json",
+    "validationChain": "validation-chain.json",
+    "fidelity": "fidelity.json",
+    "edgeCases": "edge-cases.json"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "profileId": "iso20022/MR2019",
+  "updatedAt": "2026-02-07T06:00:00Z",
+  "roundTrip": {
+    "semantic": true,
+    "structural": false,
+    "byte": false,
+    "notes": "Example-only fidelity declaration."
+  }
+}
