@@ -1844,6 +1844,11 @@ Required adapter types:
 - `business-rules` — domain rules not expressible in native schema grammar
 - `referential` — external reference checks (flight existence, party registries, tax IDs)
 
+**Profile asset references (normative)**:
+- Profile artifacts MUST reference bundled validation assets by stable identifiers, not host file paths.
+- For Schematron stages, `validation-chain.json` MUST use `config.xsltId` (or `config.xslt_id`) that resolves via an allowlist.
+- For XSD stages, profiles MAY pin the underlying structural schema set using `config.schemaSet` (allowlisted).
+
 Adapter output MUST map to:
 - `code` (UEMP error code)
 - `severity`
