@@ -1,0 +1,16 @@
+{
+  "packId": "peppol-bis-billing/3.0::cert-pack",
+  "protocolId": "peppol_bis_billing",
+  "profileId": "peppol-bis-billing/3.0",
+  "notes": [
+    "Includes a UBL Invoice example used as a 'valid' vector for a Peppol BIS Billing 3.0 validation chain.",
+    "If you need stricter licensing provenance for fixtures, replace fixtures with your own authored examples and keep this pack structure."
+  ],
+  "sources": [
+    {
+      "path": "fixtures/valid/base-example.xml",
+      "originPathInSourceRepo": "resources/peppol/xml-examples/billing/base-example.xml",
+      "license": "unknown"
+    }
+  ]
+}

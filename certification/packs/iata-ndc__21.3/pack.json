@@ -1,0 +1,22 @@
+{
+  "packVersion": "1.0",
+  "packId": "iata-ndc/21.3::cert-pack",
+  "profileId": "iata-ndc/21.3",
+  "revisionId": null,
+  "endpoint": "/api/uemp/validate-native",
+  "notes": "This pack validates IATA NDC AirShoppingRQ vectors against a UEMP implementation exposing /api/uemp/validate-native.",
+  "cases": [
+    {
+      "id": "airshoppingrq-valid-smoke",
+      "title": "AirShoppingRQ valid smoke",
+      "fixture": "fixtures/valid/airshoppingrq_valid.xml",
+      "expect": { "httpStatus": 200, "valid": true }
+    },
+    {
+      "id": "airshoppingrq-minimal-invalid",
+      "title": "AirShoppingRQ minimal invalid",
+      "fixture": "fixtures/invalid/airshoppingrq_minimal_invalid.xml",
+      "expect": { "httpStatus": 200, "valid": false }
+    }
+  ]
+}

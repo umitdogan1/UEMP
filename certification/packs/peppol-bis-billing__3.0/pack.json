@@ -1,0 +1,22 @@
+{
+  "packVersion": "1.0",
+  "packId": "peppol-bis-billing/3.0::cert-pack",
+  "profileId": "peppol-bis-billing/3.0",
+  "revisionId": null,
+  "endpoint": "/api/uemp/validate-native",
+  "notes": "This pack validates Peppol BIS Billing 3.0 (UBL) vectors against a UEMP implementation exposing /api/uemp/validate-native.",
+  "cases": [
+    {
+      "id": "invoice-valid-base-example",
+      "title": "Invoice valid base example",
+      "fixture": "fixtures/valid/base-example.xml",
+      "expect": { "httpStatus": 200, "valid": true }
+    },
+    {
+      "id": "invoice-minimal-invalid",
+      "title": "Invoice minimal invalid",
+      "fixture": "fixtures/invalid/invoice_minimal_invalid.xml",
+      "expect": { "httpStatus": 200, "valid": false }
+    }
+  ]
+}

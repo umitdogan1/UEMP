@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uemp.org/schemas/certification/uemp-cert-report.schema.json",
+  "title": "UEMP Certification Report",
+  "type": "object",
+  "required": ["reportVersion", "packId", "baseUrl", "results", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "reportVersion": { "type": "string", "minLength": 1 },
+    "packId": { "type": "string", "minLength": 1 },
+    "profileId": { "type": "string", "minLength": 1 },
+    "revisionId": { "type": ["string", "null"] },
+    "baseUrl": { "type": "string", "minLength": 1 },
+    "endpoint": { "type": "string", "minLength": 1 },
+    "startedAt": { "type": "string", "minLength": 1 },
+    "finishedAt": { "type": "string", "minLength": 1 },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["caseId", "passed", "httpStatus", "expectedHttpStatus", "expectedValid"],
+        "additionalProperties": false,
+        "properties": {
+          "caseId": { "type": "string" },
+          "title": { "type": ["string", "null"] },
+          "fixture": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "httpStatus": { "type": "integer" },
+          "expectedHttpStatus": { "type": "integer" },
+          "expectedValid": { "type": "boolean" },
+          "actualValid": { "type": ["boolean", "null"] },
+          "error": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total", "passed", "failed"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}
+

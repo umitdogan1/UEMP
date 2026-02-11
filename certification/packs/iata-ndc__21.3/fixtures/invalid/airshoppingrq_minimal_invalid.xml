@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<easd:IATA_AirShoppingRQ xmlns:easd="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+  <easd:PayloadAttributes>
+    <VersionNumber>21.3</VersionNumber>
+  </easd:PayloadAttributes>
+</easd:IATA_AirShoppingRQ>
+

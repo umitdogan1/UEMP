@@ -1,0 +1,39 @@
+{
+  "baseUrl": "http://testserver",
+  "endpoint": "/api/uemp/validate-native",
+  "finishedAt": "2026-02-11T06:36:37.888017Z",
+  "packId": "iata-ndc/21.3::cert-pack",
+  "profileId": "iata-ndc/21.3",
+  "reportVersion": "1.0",
+  "results": [
+    {
+      "actualValid": true,
+      "caseId": "airshoppingrq-valid-smoke",
+      "error": null,
+      "expectedHttpStatus": 200,
+      "expectedValid": true,
+      "fixture": "fixtures/valid/airshoppingrq_valid.xml",
+      "httpStatus": 200,
+      "passed": true,
+      "title": "AirShoppingRQ valid smoke"
+    },
+    {
+      "actualValid": false,
+      "caseId": "airshoppingrq-minimal-invalid",
+      "error": null,
+      "expectedHttpStatus": 200,
+      "expectedValid": false,
+      "fixture": "fixtures/invalid/airshoppingrq_minimal_invalid.xml",
+      "httpStatus": 200,
+      "passed": true,
+      "title": "AirShoppingRQ minimal invalid"
+    }
+  ],
+  "revisionId": null,
+  "startedAt": "2026-02-11T06:36:37.453744Z",
+  "summary": {
+    "failed": 0,
+    "passed": 2,
+    "total": 2
+  }
+}

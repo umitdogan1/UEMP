@@ -1,0 +1,39 @@
+{
+  "baseUrl": "http://testserver",
+  "endpoint": "/api/uemp/validate-native",
+  "finishedAt": "2026-02-11T06:36:38.129342Z",
+  "packId": "peppol-bis-billing/3.0::cert-pack",
+  "profileId": "peppol-bis-billing/3.0",
+  "reportVersion": "1.0",
+  "results": [
+    {
+      "actualValid": true,
+      "caseId": "invoice-valid-base-example",
+      "error": null,
+      "expectedHttpStatus": 200,
+      "expectedValid": true,
+      "fixture": "fixtures/valid/base-example.xml",
+      "httpStatus": 200,
+      "passed": true,
+      "title": "Invoice valid base example"
+    },
+    {
+      "actualValid": false,
+      "caseId": "invoice-minimal-invalid",
+      "error": null,
+      "expectedHttpStatus": 200,
+      "expectedValid": false,
+      "fixture": "fixtures/invalid/invoice_minimal_invalid.xml",
+      "httpStatus": 200,
+      "passed": true,
+      "title": "Invoice minimal invalid"
+    }
+  ],
+  "revisionId": null,
+  "startedAt": "2026-02-11T06:36:37.888440Z",
+  "summary": {
+    "failed": 0,
+    "passed": 2,
+    "total": 2
+  }
+}

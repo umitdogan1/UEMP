@@ -8,6 +8,8 @@ capability discovery.
 - `uemp_schemas.py`: UEMP constants and Pydantic models
 - `uemp_api.py`: FastAPI endpoints (`/.well-known/uemp`, `/api/uemp/messages`, `/api/uemp/capabilities`)
 - `test_uemp_endpoints.py`: Basic endpoint and strict-token tests
+- `uemp_certification.py`: Certification pack models + runner (HTTP client)
+- `certify.py`: CLI entrypoint to run a pack and emit `report.json` + `report.md`
 
 ## Run
 
@@ -22,4 +24,14 @@ uvicorn uemp_api:app --reload --port 8000
 
 ```bash
 pytest -q
+```
+
+## Certification Packs
+
+Run a certification pack against an implementation that exposes `POST /api/uemp/validate-native`:
+
+```bash
+python certify.py \
+  --base-url http://localhost:8000 \
+  --pack ../../certification/packs/peppol-bis-billing__3.0/pack.json
 ```

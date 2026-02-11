@@ -6,6 +6,7 @@ This repository contains public, protocol-only artifacts for UEMP.
 
 - `spec/`: UEMP protocol draft(s)
 - `profiles/`: Profile artifact JSON Schemas, allowlisted asset IDs, and example profile sets
+- `certification/`: Public certification packs (fixtures + assertions) and pack schemas
 - `reference/python/`: Minimal Python reference server for UEMP envelope validation and discovery
 
 ## Scope

@@ -1,0 +1,10 @@
+{
+  "packId": "iata-ndc/21.3::cert-pack",
+  "protocolId": "ndc",
+  "profileId": "iata-ndc/21.3",
+  "notes": [
+    "Fixtures are re-authored and anonymized for public use.",
+    "They are intended as smoke vectors for a UEMP implementation exposing /api/uemp/validate-native."
+  ]
+}
+
